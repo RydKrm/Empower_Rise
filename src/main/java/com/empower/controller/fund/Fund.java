@@ -1,10 +1,14 @@
 package com.empower.controller.fund;
 
-import java.util.Locale.Category;
+import java.util.Date;
+import java.util.List;
 
+import com.empower.controller.category.Category;
 import com.empower.controller.user.User;
 import com.empower.enums.StatusEnum;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -25,7 +29,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "fund")
 public class Fund {
-    @Id
+     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -46,9 +50,21 @@ public class Fund {
     @ManyToOne(fetch = FetchType.EAGER)
     private Category category;
 
+    @NotNull(message = "Day left field is required")
+    private Date dayLeft;
+
+    @NotNull(message = "Location field is required")
+    private String location;
+
+    @NotNull(message = "Images field is required")
+    @Column(name = "images", columnDefinition = "text[]")
+    private String[] images;
+
+    private Date date;
     private StatusEnum status = StatusEnum.PENDING;
     private int donatedPeople = 0;
     private int collectedAmount = 0;
+    private int totalPeople = 0;
     private boolean isAccepted = false;
 
 }

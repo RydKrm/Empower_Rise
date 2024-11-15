@@ -132,9 +132,9 @@ public class UserService {
             getUser.setAddress(data.getAddress());
         }
 
-        if (data.getPhotoURL() != null) {
-            getUser.setPhotoURL(data.getPhotoURL());
-        }
+        // if (data.getPhotoURL() != null) {
+        //     // User.setPhotoURL(data.getPhotoURL());
+        // }
 
         UserRepository.save(getUser);
         return getUser;

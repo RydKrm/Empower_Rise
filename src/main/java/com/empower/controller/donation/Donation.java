@@ -2,11 +2,13 @@ package com.empower.controller.donation;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Locale.Category;
 
+import com.empower.controller.category.Category;
 import com.empower.controller.user.User;
 import com.empower.enums.StatusEnum;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -54,8 +56,9 @@ public class Donation {
     @NotNull(message = "Location field is required")
     private String location;
 
-    @NotNull(message = "Image field is required")
-    private List<String> images;
+    @NotNull(message = "Images field is required")
+    @Column(name = "images", columnDefinition = "text[]")
+    private String[] images;
 
     private Date date;
     private StatusEnum status = StatusEnum.PENDING;
