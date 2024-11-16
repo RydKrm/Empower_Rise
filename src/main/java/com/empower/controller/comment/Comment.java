@@ -45,7 +45,7 @@ public class Comment {
     private User user;
 
     @NotNull(message = "Comment text is required")
-    private String comment;
+    private String text;
 
     private Date createdAt = new Date();
 
